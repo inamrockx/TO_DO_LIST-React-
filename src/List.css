@@ -1,0 +1,22 @@
+.listContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+
+
+}
+
+.listContainer h2{
+
+}
+.listContainer .listMenu{
+    display: flex;
+    gap: 20px;
+
+}
+
+.listContainer .listMenu button
+{
+
+}

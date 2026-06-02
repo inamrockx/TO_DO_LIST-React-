@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --sky-blue: #1cb9c5;
+  --font-unbounded: "Unbounded", sans-serif;
+}
