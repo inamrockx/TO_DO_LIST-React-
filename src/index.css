@@ -9,3 +9,7 @@
   --sky-blue: #1cb9c5;
   --font-unbounded: "Unbounded", sans-serif;
 }
+button{
+  cursor: pointer;
+  border-radius: 10px;
+}

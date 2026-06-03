@@ -9,14 +9,32 @@
 
 .listContainer h2{
 
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-unbounded);
+    font-weight: 400;
+
 }
 .listContainer .listMenu{
     display: flex;
-    gap: 20px;
+    gap: 60px;
 
 }
 
 .listContainer .listMenu button
 {
 
+}
+
+.tasksContainer{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.tasksContainer .del-btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
 }
