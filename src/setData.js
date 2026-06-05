@@ -1,9 +1,9 @@
-import { apiUrl } from "./fetchdata.js";
+import { apiUrl  } from "./fetchdata.js";
 
 
-export const SendData = async ({ data }) => {
+export const SendData = async ({userInput}) => {
   const myData = {
-    task: data,
+    task: userInput,
   };
 
   try {
@@ -17,7 +17,6 @@ export const SendData = async ({ data }) => {
 
     const respondData = await response.json();
     console.log(respondData);
-
     return respondData;
   } catch (error) {
     console.log(error);

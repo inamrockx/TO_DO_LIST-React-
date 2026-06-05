@@ -1,10 +1,10 @@
 import "./tasks.css";
-export function Tasks({tasks}) {
+export function Tasks({data}) {
   return (
     <>
       <div className="myTask">
         <div className="task">
-          <p>{tasks}</p>
+          <p>{data}</p>
         </div>
         <div className="icons">
           <div>

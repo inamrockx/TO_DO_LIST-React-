@@ -1,11 +1,13 @@
 import "./input.css";
 import { Button } from "./button.jsx";
-import {SendData} from "./setData.js";
+import { SendData } from "./setData.js";
 import { useState } from "react";
+// import { FetchingData } from "./fetchdata.js";
 
-export function Input() {
+export function Input({addNewTask}) {
+  const [userInput, setuserInput] = useState("");
 
-  const [data , setData]=useState('');
+
   return (
     <>
       <div className="inputModule">
@@ -34,11 +36,30 @@ export function Input() {
               </svg>
             </span>
             <span className="inputField">
-              <input value={data} onChange={(e)=>{setData(e.target.value)}} type="text" placeholder="New Todo" />
+              <input
+                value={userInput}
+                onChange={(e) => {
+                  setuserInput(e.target.value);
+                }}
+                type="text"
+                placeholder="New Todo"
+              />
             </span>
           </div>
           {/* Button component */}
-          <Button onClick={ ()=>{SendData({data})}} text="Add New Task" color="var(--sky-blue)" />
+          <Button
+            onClick={async () => {
+              if (userInput.trim()) {
+                await SendData({ userInput });
+                addNewTask();
+                setuserInput("");
+              } else {
+                console.log('no user input');
+              }
+            }}
+            text="Add New Task"
+            color="var(--sky-blue)"
+          />
         </div>
       </div>
     </>
