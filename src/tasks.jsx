@@ -1,10 +1,12 @@
 import "./tasks.css";
-export function Tasks({data}) {
+import {Del} from "./delete.js";
+import { UpdateModal } from "./updateModal.jsx"
+export function Tasks({data , refreshTasks}) {
   return (
     <>
       <div className="myTask">
         <div className="task">
-          <p>{data}</p>
+          <p>{data.task}</p>
         </div>
         <div className="icons">
           <div>
@@ -12,7 +14,9 @@ export function Tasks({data}) {
           </div>
 
           <div>
-            <button className="pencilSvg-Btn">
+            <button onClick={()=>{
+              <updateModal id={data.id}  />
+            }} className="pencilSvg-Btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -27,7 +31,11 @@ export function Tasks({data}) {
           </div>
 
           <div>
-            <button className="trashSvg-Btn">
+            <button onClick={ ()=> {
+              console.log('clicked btn id is '+ data.id); 
+               Del(data.id);
+               refreshTasks();
+             }} className="trashSvg-Btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

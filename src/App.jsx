@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Input } from "./input.jsx";
 import { List } from "./List.jsx";
 import { FetchingData } from "./fetchdata.js";
+import {UpdateModal} from "./updateModal.jsx"
 
 function App() {
   const [data, setData] = useState([]);
@@ -19,6 +20,7 @@ function App() {
     });
   };
 
+
   return (
     <>
       {/* Input section starts*/}
@@ -29,9 +31,12 @@ function App() {
 
       {/* List section starts */}
       <section className="list">
-        <List data={data} />
+        <List data={data} refreshTasks={refreshTasks}  />
+        <UpdateModal/>
+        
       </section>
       {/* List section ends */}
+
     </>
   );
 }

@@ -2,7 +2,8 @@ import "./List.css";
 import { Button } from "./button.jsx";
 import { Tasks } from "./tasks.jsx";
 
-export function List({ data }) {
+
+export function List({ data , refreshTasks}) {
   return (
     <>
       <div className="listContainer">
@@ -20,7 +21,7 @@ export function List({ data }) {
 
       <div className="tasksContainer">
         {data
-          ? data.map((getData) => <Tasks data={getData.task} />)
+          ? data.map((getData) => <Tasks data={getData} refreshTasks={refreshTasks} />)
           : console.log("no data found")}
 
         <div className="del-btns">

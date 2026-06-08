@@ -1,0 +1,55 @@
+.modal {
+  background: repeating-linear-gradient(
+    0deg,
+    var(--sky-blue),
+    transparent 100px
+  );
+  position: absolute;
+  top: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 20px;
+  width: 600px;
+ 
+}
+
+.modal .input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  text-align: center;
+}
+.modal .input label {
+  font-family: var(--font-unbounded);
+}
+.modal .input textarea {
+  resize: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: x-large;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+.btns .btn {
+  padding: 10px;
+}
+.blue {
+  background: var(--sky-blue);
+}
+.yellow {
+  background: #ab9d17;
+}
+
+.hideModal {
+  display: none;
+}

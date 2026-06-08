@@ -2,7 +2,7 @@ import "./input.css";
 import { Button } from "./button.jsx";
 import { SendData } from "./setData.js";
 import { useState } from "react";
-// import { FetchingData } from "./fetchdata.js";
+
 
 export function Input({addNewTask}) {
   const [userInput, setuserInput] = useState("");
