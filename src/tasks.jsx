@@ -1,15 +1,24 @@
 import "./tasks.css";
 import {Del} from "./delete.js";
-export function Tasks({data , refreshTasks, setEditingTask}) {
-  return (
+
+export function Tasks({data , refreshTasks, setEditingTask, isChecked, onToggleCheck}) {
+
+
+    return (
     <>
-      <div className="myTask">
+    
+      <div className={`myTask ${data.done ? "done" : ""}`}>
         <div className="task">
           <p>{data.task}</p>
         </div>
         <div className="icons">
           <div>
-            <input type="checkbox" />
+            <input 
+              type="checkbox" 
+              value={data.task} 
+              checked={isChecked}
+              onChange={onToggleCheck}
+            />
           </div>
 
           <div>

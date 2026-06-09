@@ -4,6 +4,7 @@ import { apiUrl  } from "./fetchdata.js";
 export const SendData = async ({userInput}) => {
   const myData = {
     task: userInput,
+    done: false
   };
 
   try {
@@ -11,7 +12,7 @@ export const SendData = async ({userInput}) => {
       method: "POST",
       body: JSON.stringify(myData),
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
     });
 

@@ -12,6 +12,7 @@
 .myTask .icons input[type='checkbox'] {
   width: 25px;
 }
+
 .myTask .icons button{
     background-color: white;
 }
@@ -21,4 +22,14 @@
 }
 .myTask .icons .trashSvg-Btn svg {
         fill: #ff0000bf;
+}
+
+.myTask.done {
+  background-color: #f0fdf4; 
+  border-color: #86efac; 
+}
+
+.myTask.done .task p {
+  text-decoration: line-through;
+  color: #71717a; 
 }

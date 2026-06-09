@@ -1,12 +1,9 @@
 {
   "tasks": [
     {
-      "task": "hello",
-      "id": "wEXrqdmGBNg"
-    },
-    {
-      "task": "inamu",
-      "id": "9mwcrPv8vjw"
+      "task": "Build features",
+      "done": false,
+      "id": "ecj1Qz8CdHw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
