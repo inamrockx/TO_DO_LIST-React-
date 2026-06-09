@@ -1,56 +1,21 @@
 import "./List.css";
 import { Button } from "./button.jsx";
 import { Tasks } from "./tasks.jsx";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { UpdateData } from "./update.js";
 import { Del } from "./delete.js";
 
 
 export function List({ data , refreshTasks, setEditingTask}) {
   const [filter, setFilter] = useState("all");
-  const [checkedIds, setCheckedIds] = useState([]);
 
-  // Sync checkboxes with db state when data shifts
-  useEffect(() => {
-    if (data) {
-      const initialChecked = data.filter(task => task.done).map(task => task.id);
-      setCheckedIds(initialChecked);
-    }
-  }, [data]);
-
-  const handleToggleCheck = (id) => {
-    setCheckedIds(prev =>
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-    );
+  const handleToggleCheck = async (id, currentDoneState) => {
+    await UpdateData(id, { done: !currentDoneState });
+    refreshTasks();
   };
 
-  const handleDoneClick = async () => {
-    // Tasks that are checked in state but not yet saved as done in DB
-    const newlyChecked = checkedIds.filter(id => {
-      const task = data.find(t => t.id === id);
-      return task && !task.done;
-    });
-
-    // Tasks that were done in DB but are unchecked in state
-    const newlyUnchecked = data
-      .filter(task => task.done && !checkedIds.includes(task.id))
-      .map(task => task.id);
-
-    if (newlyChecked.length > 0 || newlyUnchecked.length > 0) {
-      const updates = [];
-      newlyChecked.forEach(id => {
-        updates.push(UpdateData(id, { done: true }));
-      });
-      newlyUnchecked.forEach(id => {
-        updates.push(UpdateData(id, { done: false }));
-      });
-
-      await Promise.all(updates);
-      refreshTasks();
-    } else {
-      // Pressed done button freely without changes -> toggle/set filter to done
-      setFilter("done");
-    }
+  const handleDoneClick = () => {
+    setFilter("done");
   };
 
   const handleDeleteDone = async () => {
@@ -117,8 +82,8 @@ export function List({ data , refreshTasks, setEditingTask}) {
                 data={getData} 
                 refreshTasks={refreshTasks} 
                 setEditingTask={setEditingTask} 
-                isChecked={checkedIds.includes(getData.id)}
-                onToggleCheck={() => handleToggleCheck(getData.id)}
+                isChecked={!!getData.done}
+                onToggleCheck={() => handleToggleCheck(getData.id, !!getData.done)}
               />
             ))
           : <p style={{ textAlign: "center", fontStyle: "italic", color: "#888", padding: "10px 0" }}>No tasks found</p>}

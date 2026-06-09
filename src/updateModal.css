@@ -1,11 +1,25 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
 .modal {
   background: repeating-linear-gradient(
     0deg,
     var(--sky-blue),
     transparent 100px
   );
-  position: absolute;
-  top: 50%;
+  background-color: white;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -13,8 +27,10 @@
   gap: 20px;
   border-radius: 20px;
   width: 600px;
- 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
+
 
 .modal .input {
   display: flex;
@@ -31,7 +47,7 @@
   border: none;
   border-radius: 5px;
   padding: 10px;
-  font-size: x-large;
+  font-size: larger;
 }
 
 .btns {

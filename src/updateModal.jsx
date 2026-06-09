@@ -6,7 +6,9 @@ export function UpdateModal({ task, onClose, refreshTasks }) {
     const [updatedTask , setUpdatedTask]=useState(task.task);
 
   return (
-    <>
+    <div className="modal-backdrop" onClick={(e) => {
+      if (e.target === e.currentTarget) onClose();
+    }}>
       <div className="modal">
         <div className="input">
           <label htmlFor="textarea">Update Task</label>
@@ -25,6 +27,6 @@ export function UpdateModal({ task, onClose, refreshTasks }) {
           <button onClick={onClose} className="btn yellow">Cancel</button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
