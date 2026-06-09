@@ -50,6 +50,9 @@
   background: #ab9d17;
 }
 
-.hideModal {
+.hidden {
   display: none;
+}
+.show{
+  display: flex;
 }

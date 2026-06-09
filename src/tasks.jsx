@@ -1,7 +1,6 @@
 import "./tasks.css";
 import {Del} from "./delete.js";
-import { UpdateModal } from "./updateModal.jsx"
-export function Tasks({data , refreshTasks}) {
+export function Tasks({data , refreshTasks, setEditingTask}) {
   return (
     <>
       <div className="myTask">
@@ -15,7 +14,7 @@ export function Tasks({data , refreshTasks}) {
 
           <div>
             <button onClick={()=>{
-              <updateModal id={data.id}  />
+              setEditingTask(data);
             }} className="pencilSvg-Btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

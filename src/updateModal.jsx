@@ -2,24 +2,27 @@ import "./updateModal.css";
 import { UpdateData } from "./update.js";
 import { useState } from "react";
 
-export function UpdateModal({id  }) {
-    const [updatedTask , setUpdatedTask]=useState([]);
-    const [isActive , setisActive]=useState('');
+export function UpdateModal({ task, onClose, refreshTasks }) {
+    const [updatedTask , setUpdatedTask]=useState(task.task);
 
   return (
     <>
-      <div className={`modal ${isActive && isActive }`}>
+      <div className="modal">
         <div className="input">
           <label htmlFor="textarea">Update Task</label>
           <textarea value={updatedTask} onChange={(e)=>{setUpdatedTask(e.target.value)}} name="textarea" id="textarea" rows={3}></textarea>
         </div>
         <div className="btns">
-          <button onClick={()=>{
-            updatedTask ?  UpdateData(id , updatedTask) : console.log('updatedTask is empty');
+          <button onClick={async ()=>{
+            if (updatedTask) {
+              await UpdateData(task.id , updatedTask);
+              refreshTasks();
+              onClose();
+            } else {
+              console.log('updatedTask is empty');
+            }
           }} className="btn blue">Submit</button>
-          <button onClick={()=>{
-            setisActive('hideModal');
-          }} className="btn yellow">Cancel</button>
+          <button onClick={onClose} className="btn yellow">Cancel</button>
         </div>
       </div>
     </>

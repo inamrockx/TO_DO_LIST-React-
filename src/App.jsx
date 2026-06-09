@@ -7,6 +7,8 @@ import {UpdateModal} from "./updateModal.jsx"
 
 function App() {
   const [data, setData] = useState([]);
+  const [editingTask, setEditingTask] = useState(null);
+
   // fetching data
   useEffect(() => {
     FetchingData().then((getData) => {
@@ -31,9 +33,14 @@ function App() {
 
       {/* List section starts */}
       <section className="list">
-        <List data={data} refreshTasks={refreshTasks}  />
-        <UpdateModal/>
-        
+        <List data={data} refreshTasks={refreshTasks} setEditingTask={setEditingTask} />
+        {editingTask && (
+          <UpdateModal 
+            task={editingTask} 
+            onClose={() => setEditingTask(null)} 
+            refreshTasks={refreshTasks} 
+          />
+        )}
       </section>
       {/* List section ends */}
 
